@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weatherapp/bloc/weather_block_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -71,108 +73,125 @@ class HomeScreen extends StatelessWidget {
                     decoration: const BoxDecoration(color: Colors.transparent),
                   ),
                 ),
-                SizedBox(
-                  height: sizeOf.height,
-                  width: sizeOf.width,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "📍 Location Here",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                      const Text(
-                        "A Message Here",
-                        style: TextStyle(fontSize: 30),
-                      ),
-                      Center(
-                        child: Image.asset(
-                          'assets/5.png',
-                          height: sizeOf.height * 0.4,
+                BlocBuilder<WeatherBlockBloc, WeatherBlockState>(
+                  builder: (context, state) {
+                    if (state is WeatherBlockSuccess) {
+                      return SizedBox(
+                        height: sizeOf.height,
+                        width: sizeOf.width,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "📍 ${state.weather.areaName}",
+                              style: const TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              "A Message Here",
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            Center(
+                              child: Image.asset(
+                                'assets/5.png',
+                                height: sizeOf.height * 0.4,
+                              ),
+                            ),
+                            const Center(
+                              child: Text(
+                                "Temp here",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white38),
+                              ),
+                            ),
+                            const Center(
+                              child: Text(
+                                "Climate here",
+                                style: TextStyle(
+                                    fontSize: 25, color: Colors.white38),
+                              ),
+                            ),
+                            const Center(
+                              child: Text(
+                                "Date Here",
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.white38),
+                              ),
+                            ),
+                            SizedBox(
+                              height: sizeOf.height * 0.05,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(
+                                  'assets/11.png',
+                                  height: imgSz,
+                                ),
+                                const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Sunrise"),
+                                    Text("Data Here")
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: sizeOf.width * 0.08,
+                                ),
+                                Image.asset(
+                                  'assets/12.png',
+                                  height: imgSz,
+                                ),
+                                const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Sunset"),
+                                    Text("data here"),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const Divider(
+                              thickness: 0.1,
+                              color: Colors.white,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(
+                                  'assets/13.png',
+                                  height: imgSz,
+                                ),
+                                const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Temp Max"),
+                                    Text("Data Here")
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: sizeOf.width * 0.08,
+                                ),
+                                Image.asset(
+                                  'assets/14.png',
+                                  height: imgSz,
+                                ),
+                                const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Temp Min"),
+                                    Text("data here"),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ),
-                      const Center(
-                        child: Text(
-                          "Temp here",
-                          style: TextStyle(fontSize: 20, color: Colors.white38),
-                        ),
-                      ),
-                      const Center(
-                        child: Text(
-                          "Climate here",
-                          style: TextStyle(fontSize: 25, color: Colors.white38),
-                        ),
-                      ),
-                      const Center(
-                        child: Text(
-                          "Date Here",
-                          style: TextStyle(fontSize: 15, color: Colors.white38),
-                        ),
-                      ),
-                      SizedBox(
-                        height: sizeOf.height * 0.05,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            'assets/11.png',
-                            height: imgSz,
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [Text("Sunrise"), Text("Data Here")],
-                          ),
-                          SizedBox(
-                            width: sizeOf.width * 0.08,
-                          ),
-                          Image.asset(
-                            'assets/12.png',
-                            height: imgSz,
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Sunset"),
-                              Text("data here"),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const Divider(
-                        thickness: 0.1,
-                        color: Colors.white,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            'assets/13.png',
-                            height: imgSz,
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [Text("Temp Max"), Text("Data Here")],
-                          ),
-                          SizedBox(
-                            width: sizeOf.width * 0.08,
-                          ),
-                          Image.asset(
-                            'assets/14.png',
-                            height: imgSz,
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Temp Min"),
-                              Text("data here"),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                      );
+                    } else {
+                      return Container();
+                    }
+                  },
                 )
               ],
             ),

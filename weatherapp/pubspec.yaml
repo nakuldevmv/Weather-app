@@ -16,6 +16,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   geolocator: ^11.0.0
   bloc: ^8.1.4
+  weather: ^3.1.1
+  flutter_bloc: ^8.1.5
 
 dev_dependencies:
   flutter_test:
