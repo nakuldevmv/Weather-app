@@ -1,11 +1,7 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var sizeOf = MediaQuery.of(context).size;
+    var imgSz = sizeOf.height * 0.08; //define the size of bottom small images
     return Scaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
@@ -24,7 +21,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-          padding: const EdgeInsets.fromLTRB(40, 1.2 * kToolbarHeight, 40, 20),
+          padding: const EdgeInsets.fromLTRB(40, 0.8 * kToolbarHeight, 40, 10),
           child: SizedBox(
             height: sizeOf.height,
             child: Stack(
@@ -58,6 +55,16 @@ class HomeScreen extends StatelessWidget {
                         color: Color.fromARGB(255, 255, 154, 66)),
                   ),
                 ),
+                Align(
+                  alignment: const AlignmentDirectional(0, 0.5),
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromARGB(255, 124, 157, 255)),
+                  ),
+                ),
                 BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
                   child: Container(
@@ -79,7 +86,91 @@ class HomeScreen extends StatelessWidget {
                         "A Message Here",
                         style: TextStyle(fontSize: 30),
                       ),
-                      Image.asset('assets/1.png'),
+                      Center(
+                        child: Image.asset(
+                          'assets/5.png',
+                          height: sizeOf.height * 0.4,
+                        ),
+                      ),
+                      const Center(
+                        child: Text(
+                          "Temp here",
+                          style: TextStyle(fontSize: 20, color: Colors.white38),
+                        ),
+                      ),
+                      const Center(
+                        child: Text(
+                          "Climate here",
+                          style: TextStyle(fontSize: 25, color: Colors.white38),
+                        ),
+                      ),
+                      const Center(
+                        child: Text(
+                          "Date Here",
+                          style: TextStyle(fontSize: 15, color: Colors.white38),
+                        ),
+                      ),
+                      SizedBox(
+                        height: sizeOf.height * 0.05,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset(
+                            'assets/11.png',
+                            height: imgSz,
+                          ),
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [Text("Sunrise"), Text("Data Here")],
+                          ),
+                          SizedBox(
+                            width: sizeOf.width * 0.08,
+                          ),
+                          Image.asset(
+                            'assets/12.png',
+                            height: imgSz,
+                          ),
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Sunset"),
+                              Text("data here"),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Divider(
+                        thickness: 0.1,
+                        color: Colors.white,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Image.asset(
+                            'assets/13.png',
+                            height: imgSz,
+                          ),
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [Text("Temp Max"), Text("Data Here")],
+                          ),
+                          SizedBox(
+                            width: sizeOf.width * 0.08,
+                          ),
+                          Image.asset(
+                            'assets/14.png',
+                            height: imgSz,
+                          ),
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Temp Min"),
+                              Text("data here"),
+                            ],
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 )
