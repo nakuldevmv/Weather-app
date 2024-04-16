@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -60,6 +62,25 @@ class HomeScreen extends StatelessWidget {
                   filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
                   child: Container(
                     decoration: const BoxDecoration(color: Colors.transparent),
+                  ),
+                ),
+                SizedBox(
+                  height: sizeOf.height,
+                  width: sizeOf.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "📍 Location Here",
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      const Text(
+                        "A Message Here",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Image.asset('assets/1.png'),
+                    ],
                   ),
                 )
               ],

@@ -23,9 +23,9 @@ dev_dependencies:
   
   flutter_lints: ^3.0.0
 
-flutter:  
+flutter: 
+#next time you add assets remeber to put proper sapcer or there will be an exception
+  assets:
+    - assets/ 
   
   uses-material-design: true
-
-assets:
-  - assets/
