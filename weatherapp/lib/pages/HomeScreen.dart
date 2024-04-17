@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:weatherapp/bloc/weather_block_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -99,21 +100,23 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Center(
                               child: Text(
-                                "${state.weather.temperature}",
+                                "${state.weather.temperature!.celsius!.round()}°C",
                                 style: const TextStyle(
                                     fontSize: 20, color: Colors.white38),
                               ),
                             ),
                             Center(
                               child: Text(
-                                "${state.weather.weatherMain}",
+                                state.weather.weatherDescription!.toUpperCase(),
                                 style: const TextStyle(
                                     fontSize: 25, color: Colors.white38),
                               ),
                             ),
                             Center(
                               child: Text(
-                                "${state.weather.date}",
+                                DateFormat('EEEE dd •')
+                                    .add_jm()
+                                    .format(state.weather.date!),
                                 style: const TextStyle(
                                     fontSize: 15, color: Colors.white38),
                               ),
@@ -133,7 +136,9 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     const Text("Sunrise"),
                                     Text(
-                                      "${state.weather.sunrise}",
+                                      DateFormat('')
+                                          .add_jm()
+                                          .format(state.weather.sunrise!),
                                     )
                                   ],
                                 ),
@@ -149,7 +154,9 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     const Text("Sunset"),
                                     Text(
-                                      "${state.weather.sunset}",
+                                      DateFormat('')
+                                          .add_jm()
+                                          .format(state.weather.sunset!),
                                     ),
                                   ],
                                 ),
@@ -171,7 +178,7 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     const Text("Temp Max"),
                                     Text(
-                                      "${state.weather.tempMax}",
+                                      "${state.weather.tempMax!.celsius!.round()}°C",
                                     )
                                   ],
                                 ),
@@ -187,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     const Text("Temp Min"),
                                     Text(
-                                      "${state.weather.tempMin}",
+                                      "${state.weather.tempMin!.celsius!.round()}°C",
                                     ),
                                   ],
                                 ),
