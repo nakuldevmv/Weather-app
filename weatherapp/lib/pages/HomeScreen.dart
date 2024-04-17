@@ -97,24 +97,24 @@ class HomeScreen extends StatelessWidget {
                                 height: sizeOf.height * 0.4,
                               ),
                             ),
-                            const Center(
+                            Center(
                               child: Text(
-                                "Temp here",
-                                style: TextStyle(
+                                "${state.weather.temperature}",
+                                style: const TextStyle(
                                     fontSize: 20, color: Colors.white38),
                               ),
                             ),
-                            const Center(
+                            Center(
                               child: Text(
-                                "Climate here",
-                                style: TextStyle(
+                                "${state.weather.weatherMain}",
+                                style: const TextStyle(
                                     fontSize: 25, color: Colors.white38),
                               ),
                             ),
-                            const Center(
+                            Center(
                               child: Text(
-                                "Date Here",
-                                style: TextStyle(
+                                "${state.weather.date}",
+                                style: const TextStyle(
                                     fontSize: 15, color: Colors.white38),
                               ),
                             ),
@@ -128,11 +128,13 @@ class HomeScreen extends StatelessWidget {
                                   'assets/11.png',
                                   height: imgSz,
                                 ),
-                                const Column(
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Sunrise"),
-                                    Text("Data Here")
+                                    const Text("Sunrise"),
+                                    Text(
+                                      "${state.weather.sunrise}",
+                                    )
                                   ],
                                 ),
                                 SizedBox(
@@ -142,11 +144,13 @@ class HomeScreen extends StatelessWidget {
                                   'assets/12.png',
                                   height: imgSz,
                                 ),
-                                const Column(
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Sunset"),
-                                    Text("data here"),
+                                    const Text("Sunset"),
+                                    Text(
+                                      "${state.weather.sunset}",
+                                    ),
                                   ],
                                 ),
                               ],
@@ -162,11 +166,13 @@ class HomeScreen extends StatelessWidget {
                                   'assets/13.png',
                                   height: imgSz,
                                 ),
-                                const Column(
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Temp Max"),
-                                    Text("Data Here")
+                                    const Text("Temp Max"),
+                                    Text(
+                                      "${state.weather.tempMax}",
+                                    )
                                   ],
                                 ),
                                 SizedBox(
@@ -176,11 +182,13 @@ class HomeScreen extends StatelessWidget {
                                   'assets/14.png',
                                   height: imgSz,
                                 ),
-                                const Column(
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Temp Min"),
-                                    Text("data here"),
+                                    const Text("Temp Min"),
+                                    Text(
+                                      "${state.weather.tempMin}",
+                                    ),
                                   ],
                                 ),
                               ],
