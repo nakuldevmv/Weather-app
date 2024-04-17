@@ -78,6 +78,39 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Widget GetMessage() {
+    final Hour = DateTime.now().hour;
+    var textstyle = const TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+    switch (Hour) {
+      case >= 3 && <= 11:
+        return Text(
+          "Good Morning!",
+          style: textstyle,
+        );
+
+      case >= 12 && <= 16:
+        return Text(
+          "Good Afternoon!",
+          style: textstyle,
+        );
+
+      case >= 17 && <= 21:
+        return Text(
+          "Good Evening!",
+          style: textstyle,
+        );
+
+      case >= 22 && <= 24 || >= 0 && <= 2:
+        return Text(
+          "Good Night!",
+          style: textstyle,
+        );
+
+      default:
+        return const Text("");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var sizeOf = MediaQuery.of(context).size;
@@ -157,10 +190,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: const TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
-                            const Text(
-                              "A Message Here",
-                              style: TextStyle(fontSize: 30),
-                            ),
+
+                            GetMessage(),
+
                             GetWeatherIcon(state.weather.weatherConditionCode),
                             // Center(
                             //   child: Image.asset(
