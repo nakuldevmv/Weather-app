@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -6,8 +8,75 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:weatherapp/bloc/weather_block_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Widget GetWeatherIcon(var code) {
+    var sizeOf = MediaQuery.of(context).size;
+    switch (code) {
+      case >= 200 && <= 231:
+        return Center(
+          child: Image.asset(
+            'assets/5.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+      case >= 300 && <= 321:
+        return Center(
+          child: Image.asset(
+            'assets/3.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+      case >= 500 && <= 531:
+        return Center(
+          child: Image.asset(
+            'assets/2.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+      case >= 600 && <= 622:
+        return Center(
+          child: Image.asset(
+            'assets/4.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+      case >= 701 && <= 781:
+        return Center(
+          child: Image.asset(
+            'assets/5.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+      case == 800:
+        return Center(
+          child: Image.asset(
+            'assets/6.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+      case >= 801 && <= 804:
+        return Center(
+          child: Image.asset(
+            'assets/8.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+      default:
+        return Center(
+          child: Image.asset(
+            'assets/7.png',
+            height: sizeOf.height * 0.4,
+          ),
+        );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,12 +161,13 @@ class HomeScreen extends StatelessWidget {
                               "A Message Here",
                               style: TextStyle(fontSize: 30),
                             ),
-                            Center(
-                              child: Image.asset(
-                                'assets/5.png',
-                                height: sizeOf.height * 0.4,
-                              ),
-                            ),
+                            GetWeatherIcon(state.weather.weatherConditionCode),
+                            // Center(
+                            //   child: Image.asset(
+                            //     'assets/5.png',
+                            //     height: sizeOf.height * 0.4,
+                            //   ),
+                            // ),
                             Center(
                               child: Text(
                                 "${state.weather.temperature!.celsius!.round()}°C",
@@ -107,7 +177,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Center(
                               child: Text(
-                                state.weather.weatherDescription!.toUpperCase(),
+                                state.weather.weatherMain!.toUpperCase(),
                                 style: const TextStyle(
                                     fontSize: 25, color: Colors.white38),
                               ),
