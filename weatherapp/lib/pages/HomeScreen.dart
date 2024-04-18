@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
         );
 
       default:
-        return const Text(" ");
+        return const Text("");
     }
   }
 
