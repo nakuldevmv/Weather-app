@@ -13,7 +13,7 @@ A Flutter-based weather app that fetches and displays real-time weather data for
   - General weather conditions
 - Clean and simple UI.
 
-## Screenshots
+<!-- Screenshots-->
 
 <!-- Add screenshots here if available -->
 
