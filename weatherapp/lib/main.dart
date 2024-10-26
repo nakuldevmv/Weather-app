@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weatherapp/bloc/weather_block_bloc.dart';
+import 'package:weatherapp/webView/webViewContainer.dart';
 
 import 'pages/HomeScreen.dart';
 
@@ -24,14 +25,15 @@ class MyApp extends StatelessWidget {
         builder: (context, snap) {
           if (snap.hasData) {
             return BlocProvider<WeatherBlockBloc>(
-              create: (context) =>
-                  WeatherBlockBloc()..add(FetchWeather(snap.data as Position)),
+              create: (context) => WeatherBlockBloc()..add(FetchWeather(snap.data as Position)),
               child: const HomeScreen(),
             );
           } else {
             return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
+              body: WebView(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               ),
             );
           }
@@ -59,8 +61,7 @@ Future<Position> _determinePosition() async {
   }
 
   if (permission == LocationPermission.deniedForever) {
-    return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
+    return Future.error('Location permissions are permanently denied, we cannot request permissions.');
   }
 
   return await Geolocator.getCurrentPosition();
